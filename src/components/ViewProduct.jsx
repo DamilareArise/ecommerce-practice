@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux"
 
 
 const ViewProduct = () => {
+  let products = useSelector((state)=> state.product.products)
+  console.log(products);
+  
+
   return (
     <>
     
