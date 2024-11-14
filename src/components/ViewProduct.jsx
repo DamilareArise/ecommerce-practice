@@ -1,9 +1,36 @@
+import axios from "axios";
 import { useSelector } from "react-redux"
 
 
 const ViewProduct = () => {
   let products = useSelector((state)=> state.product.products)
   console.log(products);
+
+
+  const handleDelete = (product_id)=>{
+    let proceed = confirm('Are you sure?')
+    if(proceed){
+      let url = `https://e-commerce-8kbb.onrender.com/product/delete-product/${product_id}`
+      let token = localStorage.token
+      axios.delete(url, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+
+        }
+      })
+      .then((response)=>{
+        let result = response.data
+        alert(result.message)
+        window.location.reload()
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+    else{
+      console.log('cancelled')
+    }
+  }
   
 
   return (
@@ -23,18 +50,38 @@ const ViewProduct = () => {
                 <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td><button className='btn'><i className="fa-regular fa-pen-to-square"></i></button></td>
-                <td><button className='btn'><i className="fa-solid fa-trash"></i></button></td>
-                </tr>
-            </tbody>
+            {
+              products ? (
+                <tbody>
+                  {
+                    products.map((product, index) => (
+                      <tr key={index}>
+                        <th scope="row">{index + 1}</th>
+                        <td>
+                          <img src={product.image} alt={product.title} style={{width: 50}}/>
+                        </td>
+                        <td>{product.title}</td>
+                        <td>{product.description}</td>
+                        <td>#{product.price}</td>
+                        <td>{product.quantity}</td>
+                        <td><button className='btn'><i className="fa-regular fa-pen-to-square"></i></button></td>
+                        <td><button onClick={()=>handleDelete(product._id)} className='btn'><i className="fa-solid fa-trash"></i></button></td>
+                      </tr>
+                    ))
+                  }
+                  
+                </tbody>
+              ) :
+              (
+                <tbody>
+                
+                  <p className="text-center">Loading...</p>
+                
+                </tbody>
+              )
+            }
+
+           
         </table>
     </>
   )

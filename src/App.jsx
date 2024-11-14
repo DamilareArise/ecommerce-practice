@@ -12,6 +12,8 @@ import DisplayCart from './components/DisplayCart'
 
 const App = () => {
 
+  const token = localStorage.token
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const App = () => {
     <>
       <Routes>
         <Route path='/' element={<Landing/>}/>
-        <Route path='/admin-dashboard' element={<Dashboard/>}/>
+        <Route path='/admin-dashboard' element={token ? <Dashboard/> : <Signin/>}/>
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/display-cart' element={<DisplayCart/>}/>
       </Routes>
