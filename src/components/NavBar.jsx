@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 const NavBar = () => {
@@ -12,14 +13,15 @@ const NavBar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ">
-                            <a className="nav-link bg-danger text-white px-4 d-flex align-items-center rounded-pill fw-medium gap-3"  href="#">
+                            <Link to={'/display-cart'} className="nav-link bg-danger text-white px-4 d-flex align-items-center rounded-pill fw-medium gap-3"  href="#">
                                 <i className="fa-solid fa-cart-shopping position-relative">
                                     <span className="position-absolute top-0 start-100  translate-middle badge rounded-pill bg-black">
                                         9
                                     </span>
                                 </i> 
                                 
-                                <span>Cart</span> </a>
+                                <span>Cart</span> 
+                            </Link>
                         </div>
                     </div>
                 </div>

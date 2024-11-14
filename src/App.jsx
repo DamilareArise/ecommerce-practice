@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getProduct } from './app/productSlicer'
 import Signin from './pages/Signin'
+import DisplayCart from './components/DisplayCart'
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/' element={<Landing/>}/>
         <Route path='/admin-dashboard' element={<Dashboard/>}/>
         <Route path='/signin' element={<Signin/>}/>
+        <Route path='/display-cart' element={<DisplayCart/>}/>
       </Routes>
     </>
   )
