@@ -1,3 +1,4 @@
+
 import NavBar from "../components/NavBar"
 
 
@@ -6,8 +7,11 @@ const Landing = () => {
     <>
         <NavBar/>
 
-        <main>
-            <div className="container py-3" style={{marginTop:"10rem"}}>
+
+
+        <main style={{marginTop:"10rem"}}>
+
+            <div className="container py-3">
                 <div className="row">
                     <div className="col-md-4 d-flex mb-4 justify-content-center">
                         <div className="card h-100 border-0 shadow-sm rounded-3" style={{width: "20rem"}}>

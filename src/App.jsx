@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getProduct } from './app/productSlicer'
+import Signin from './pages/Signin'
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path='/admin-dashboard' element={<Dashboard/>}/>
+        <Route path='/signin' element={<Signin/>}/>
       </Routes>
     </>
   )
