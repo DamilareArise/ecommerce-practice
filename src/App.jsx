@@ -24,6 +24,7 @@ const App = () => {
     .then((response)=>{
       console.log(response.data)
       let result = response.data
+      
       dispatch(getProduct(result.data))
     })
     .catch((err)=>{

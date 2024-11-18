@@ -47,6 +47,7 @@ const DisplayCart = () => {
                         </div>
                     </div>
                 </div>
+                <button className="btn btn-danger w-100">checkout</button>
             </div>
         </section>
 
