@@ -10,6 +10,7 @@ import Signin from './pages/Signin'
 import DisplayCart from './components/DisplayCart'
 
 
+
 const App = () => {
 
   const token = localStorage.token
@@ -17,6 +18,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    
     console.log('Loading...');
     
     const url = "https://e-commerce-8kbb.onrender.com/product/all-product"

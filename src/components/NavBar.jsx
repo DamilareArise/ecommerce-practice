@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 
 const NavBar = () => {
+  let  carts = useSelector((state)=>state.cart.items) 
+
   return (
     <>
         <header className='bg-white w-100 position-fixed top-0 z-3'>
@@ -16,7 +19,7 @@ const NavBar = () => {
                             <Link to={'/display-cart'} className="nav-link bg-danger text-white px-4 d-flex align-items-center rounded-pill fw-medium gap-3"  href="#">
                                 <i className="fa-solid fa-cart-shopping position-relative">
                                     <span className="position-absolute top-0 start-100  translate-middle badge rounded-pill bg-black">
-                                        9
+                                        {carts.length}
                                     </span>
                                 </i> 
                                 

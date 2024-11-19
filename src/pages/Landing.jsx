@@ -1,13 +1,23 @@
 
 import { Link } from "react-router-dom"
 import NavBar from "../components/NavBar"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { addItem } from "../app/cartSlicer"
 
 
 const Landing = () => {
-
+  const dispatch = useDispatch()
   let products = useSelector((state)=> state.product.products)
   
+  const handleAddToCart = (index) =>{
+    let item = {
+        product: products[index],
+        quantity: 1,
+        total_price: products[index].price
+    }
+    dispatch(addItem(item))
+    alert('add to cart sucessfully')
+  }
     
   return (
     <>
@@ -26,8 +36,9 @@ const Landing = () => {
                                     <img src={product.image} className="card-img-top" alt="..." height={200}/>
                                     <div className="card-body">
                                         <h5 className="card-title">{product.title}</h5>
+                                        <p className="card-text">#{product.price.toLocaleString()}</p>
                                         <p className="card-text">{product.description}</p>
-                                        <a href="#" className="btn btn-danger">Add to cart</a>
+                                        <a href="#" className="btn btn-danger" onClick={() => handleAddToCart(index)}>Add to cart</a>
                                     </div>
                                 </div>
                             </div>
